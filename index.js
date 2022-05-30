@@ -129,28 +129,6 @@ async function run() {
       const result = await userCollection.updateOne(filter, updateDoc, options);
       res.send(result);
     });
-    //<===== UPDATE QUANTITY ====>
-
-    app.put("/quanrtity/:id", async (req, res) => {
-      const id = req.params.id;
-      const updateQuantity = req.body;
-      const filter = { _id: ObjectId(id) };
-      console.log(updateQuantity);
-      const options = { upsert: true };
-      const updatedDoc = {
-        $set: {
-          quanitity: updateQuantity.updatedQuantity,
-        },
-      };
-      console.log(updatedDoc);
-      const result = await productColection.updateOne(
-        filter,
-        updatedDoc,
-        options
-      );
-      res.send(result);
-    });
-
     // <<<< order DELETE  >>>>>
 
     app.delete("/deleteo/:id", async (req, res) => {
